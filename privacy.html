@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy — Vigil</title>
+  <meta name="robots" content="noindex">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0a0a0a; color: #e4e4e7; line-height: 1.7; }
+    .container { max-width: 700px; margin: 0 auto; padding: 80px 24px; }
+    h1 { font-size: 28px; font-weight: 700; margin-bottom: 8px; }
+    .date { color: #8b8b92; font-size: 14px; margin-bottom: 32px; }
+    h2 { font-size: 18px; font-weight: 600; margin: 28px 0 12px; }
+    p, li { font-size: 15px; color: #a1a1aa; margin-bottom: 12px; }
+    ul { padding-left: 24px; }
+    a { color: #ff6b2b; }
+    .back { display: inline-block; margin-bottom: 24px; color: #8b8b92; font-size: 14px; text-decoration: none; }
+    .back:hover { color: #e4e4e7; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="/" class="back">&larr; Back to Vigil</a>
+    <h1>Privacy Policy</h1>
+    <p class="date">Effective: March 7, 2026</p>
+
+    <h2>Summary</h2>
+    <p><strong>Vigil collects zero data.</strong> It is self-hosted software that runs entirely on your infrastructure.</p>
+
+    <h2>1. Data Collection</h2>
+    <p>Vigil does not collect, transmit, or store any data on external servers. All data remains on your machine or server:</p>
+    <ul>
+      <li>Scan results are stored locally in JSON files or your PostgreSQL database</li>
+      <li>Credentials are encrypted with AES-256-GCM and stored locally</li>
+      <li>Session data is stored locally</li>
+      <li>No analytics, no telemetry, no phone-home</li>
+    </ul>
+
+    <h2>2. AI Features (BYOK)</h2>
+    <p>When you use AI features, Vigil shells out to CLI tools (Claude, Codex) that <strong>you</strong> install and authenticate. Your AI interactions go directly between your machine and your AI provider. Vigil does not intercept, log, or relay these interactions.</p>
+
+    <h2>3. Third-Party Services</h2>
+    <p>Vigil may connect to external services only when you explicitly request it:</p>
+    <ul>
+      <li>Scanner targets you specify (nmap, nuclei, nikto scans)</li>
+      <li>RSS feeds you configure for threat intelligence</li>
+      <li>Docker registries for container image scanning</li>
+      <li>DNS/WHOIS servers for reconnaissance</li>
+    </ul>
+
+    <h2>4. Website (vigil.agency)</h2>
+    <p>This website is a static page hosted on GitHub Pages. It does not use cookies, analytics, or tracking scripts.</p>
+
+    <h2>5. Contact</h2>
+    <p>Questions: <a href="mailto:hello@vigil.agency">hello@vigil.agency</a></p>
+  </div>
+</body>
+</html>

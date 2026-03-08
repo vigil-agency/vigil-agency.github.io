@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vigil vs Competitors — Open Source Security Tools Compared</title>
+  <meta name="description" content="Compare Vigil with DefectDojo, Wazuh, TheHive, Shuffle, Nuclei, OpenVAS, ZAP, and Caldera — features, licensing, and capabilities.">
+  <meta property="og:title" content="Vigil vs Competitors">
+  <meta property="og:description" content="Compare open-source security tools: scanning, AI, MCP, incidents, compliance.">
+  <meta name="theme-color" content="#0a0a0a">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --canvas: #0a0a0a; --surface: rgba(18,18,18,0.65); --surface-solid: #121212;
+      --text: #e4e4e7; --text-dim: #8b8b92; --text-faint: #52525a;
+      --border: rgba(255,255,255,0.08); --accent: #ff6b2b; --accent-dim: rgba(255,107,43,0.15);
+      --radius: 12px;
+      --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+    body { font-family: var(--font); background: var(--canvas); color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+    /* Nav (minimal) */
+    nav { padding: 20px 0; border-bottom: 1px solid var(--border); }
+    nav .container { display: flex; align-items: center; justify-content: space-between; }
+    .nav-brand { font-family: var(--font-mono); font-size: 18px; font-weight: 700; color: var(--text); }
+    .nav-brand span { color: var(--accent); }
+
+    /* Hero */
+    .hero { padding: 80px 0 48px; text-align: center; }
+    .hero h1 { font-size: 36px; font-weight: 700; margin-bottom: 12px; }
+    .hero p { color: var(--text-dim); font-size: 16px; max-width: 640px; margin: 0 auto; }
+
+    /* Table */
+    .compare-wrap { overflow-x: auto; padding: 0 0 80px; }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 900px; }
+    thead { position: sticky; top: 0; }
+    th {
+      background: var(--surface-solid); padding: 14px 12px; text-align: left;
+      font-weight: 600; border-bottom: 2px solid var(--border); white-space: nowrap;
+    }
+    th:first-child { border-radius: var(--radius) 0 0 0; }
+    th:last-child { border-radius: 0 var(--radius) 0 0; }
+    td { padding: 12px; border-bottom: 1px solid var(--border); color: var(--text-dim); }
+    tr:hover td { background: rgba(255,255,255,0.02); }
+    .tool-name { font-weight: 600; color: var(--text); white-space: nowrap; }
+    .vigil-row td { background: var(--accent-dim); color: var(--text); }
+    .vigil-row .tool-name { color: var(--accent); }
+    .yes { color: var(--accent); font-weight: 600; }
+    .no { color: var(--text-faint); }
+    .partial { color: var(--text-dim); }
+    .stars { font-family: var(--font-mono); font-size: 13px; }
+    .license-badge {
+      display: inline-block; padding: 2px 8px; border-radius: 6px; font-size: 12px;
+      background: rgba(255,255,255,0.05); border: 1px solid var(--border);
+    }
+
+    /* Bottom CTA */
+    .bottom-cta { text-align: center; padding: 60px 0; border-top: 1px solid var(--border); }
+    .bottom-cta h2 { font-size: 24px; margin-bottom: 12px; }
+    .bottom-cta p { color: var(--text-dim); margin-bottom: 24px; }
+    .btn { padding: 12px 28px; border-radius: 10px; font-size: 15px; font-weight: 600; background: var(--accent); color: #fff; display: inline-block; }
+    .btn:hover { opacity: 0.9; text-decoration: none; }
+
+    footer { padding: 24px 0; text-align: center; font-size: 13px; color: var(--text-faint); }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <a href="/" class="nav-brand">VIGIL<span>.</span></a>
+    <a href="https://github.com/vigil-agency/vigil">GitHub</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="container">
+    <h1>Vigil vs. The Landscape</h1>
+    <p>How Vigil compares to other open-source security tools across scanning, AI, incidents, compliance, and deployment.</p>
+  </div>
+</section>
+
+<section class="compare-wrap">
+  <div class="container">
+    <table>
+      <thead>
+        <tr>
+          <th>Tool</th>
+          <th>Stars</th>
+          <th>License</th>
+          <th>Native Scanning</th>
+          <th>AI Triage</th>
+          <th>MCP Server</th>
+          <th>Incidents</th>
+          <th>Compliance</th>
+          <th>OSINT</th>
+          <th>Agents</th>
+          <th>Deps</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="vigil-row">
+          <td class="tool-name">Vigil</td>
+          <td class="stars">New</td>
+          <td><span class="license-badge">AGPL-3.0</span></td>
+          <td class="yes">6 scanners</td>
+          <td class="yes">BYOK (free)</td>
+          <td class="yes">25+ tools</td>
+          <td class="yes">Yes</td>
+          <td class="yes">5 frameworks</td>
+          <td class="yes">Yes</td>
+          <td class="yes">20 agents</td>
+          <td>6</td>
+        </tr>
+        <tr>
+          <td class="tool-name">DefectDojo</td>
+          <td class="stars">~4.5K</td>
+          <td><span class="license-badge">BSD-3</span></td>
+          <td class="no">Aggregates only</td>
+          <td class="partial">Pro only</td>
+          <td class="partial">Pro only</td>
+          <td class="no">No</td>
+          <td class="partial">Limited</td>
+          <td class="no">No</td>
+          <td class="partial">Pro only</td>
+          <td>Django stack</td>
+        </tr>
+        <tr>
+          <td class="tool-name">Wazuh</td>
+          <td class="stars">~15K</td>
+          <td><span class="license-badge">GPL-2.0</span></td>
+          <td class="partial">Endpoint agents</td>
+          <td class="partial">Emerging</td>
+          <td class="partial">Community</td>
+          <td class="yes">Yes</td>
+          <td class="yes">Yes</td>
+          <td class="no">No</td>
+          <td class="no">No</td>
+          <td>Heavy (cluster)</td>
+        </tr>
+        <tr>
+          <td class="tool-name">TheHive</td>
+          <td class="stars">~9K</td>
+          <td><span class="license-badge">Commercial</span></td>
+          <td class="no">No</td>
+          <td class="no">No</td>
+          <td class="no">No</td>
+          <td class="yes">Yes</td>
+          <td class="no">No</td>
+          <td class="no">No</td>
+          <td class="no">No</td>
+          <td>Java stack</td>
+        </tr>
+        <tr>
+          <td class="tool-name">Shuffle</td>
+          <td class="stars">~2.2K</td>
+          <td><span class="license-badge">AGPL-3.0</span></td>
+          <td class="no">No</td>
+          <td class="no">No</td>
+          <td class="no">No</td>
+          <td class="no">No</td>
+          <td class="no">No</td>
+          <td class="no">No</td>
+          <td class="partial">Workflows</td>
+          <td>Go + Docker</td>
+        </tr>
+        <tr>
+          <td class="tool-name">Nuclei</td>
+          <td class="stars">~27K</td>
+          <td><span class="license-badge">MIT</span></td>
+          <td class="partial">Vuln scan only</td>
+          <td class="partial">Cloud only</td>
+          <td class="no">No</td>
+          <td class="no">No</td>
+          <td class="no">No</td>
+          <td class="no">No</td>
+          <td class="no">No</td>
+          <td>Go binary</td>
+        </tr>
+        <tr>
+          <td class="tool-name">OpenVAS</td>
+          <td class="stars">~4.4K</td>
+          <td><span class="license-badge">GPL-2.0</span></td>
+          <td class="yes">160K+ tests</td>
+          <td class="no">No</td>
+          <td class="no">No</td>
+          <td class="no">No</td>
+          <td class="no">No</td>
+          <td class="no">No</td>
+          <td class="no">No</td>
+          <td>C/multi-service</td>
+        </tr>
+        <tr>
+          <td class="tool-name">OWASP ZAP</td>
+          <td class="stars">~15K</td>
+          <td><span class="license-badge">Apache-2.0</span></td>
+          <td class="partial">Web scan only</td>
+          <td class="no">No</td>
+          <td class="no">No</td>
+          <td class="no">No</td>
+          <td class="no">No</td>
+          <td class="no">No</td>
+          <td class="no">No</td>
+          <td>Java</td>
+        </tr>
+        <tr>
+          <td class="tool-name">MITRE Caldera</td>
+          <td class="stars">~6.8K</td>
+          <td><span class="license-badge">Apache-2.0</span></td>
+          <td class="partial">Red team only</td>
+          <td class="yes">LLM planner</td>
+          <td class="yes">Official</td>
+          <td class="no">No</td>
+          <td class="no">No</td>
+          <td class="no">No</td>
+          <td class="yes">Abilities</td>
+          <td>Python</td>
+        </tr>
+        <tr>
+          <td class="tool-name">Faraday</td>
+          <td class="stars">~6.2K</td>
+          <td><span class="license-badge">GPL-3.0</span></td>
+          <td class="partial">80+ importers</td>
+          <td class="no">No</td>
+          <td class="no">No</td>
+          <td class="no">No</td>
+          <td class="partial">Limited</td>
+          <td class="no">No</td>
+          <td class="no">No</td>
+          <td>Python</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="bottom-cta">
+  <div class="container">
+    <h2>Ready to Try Vigil?</h2>
+    <p>Install in under a minute. Free and open-source.</p>
+    <a href="https://github.com/vigil-agency/vigil" class="btn">Get Started</a>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2026 Vigil Agency &middot; <a href="/">Home</a> &middot; <a href="terms.html">Terms</a> &middot; <a href="privacy.html">Privacy</a></p>
+  </div>
+</footer>
+
+</body>
+</html>

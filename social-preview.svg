@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640">
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="#ff6b2b" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#0a0a0a" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1280" height="640" fill="#0a0a0a"/>
+  <rect width="1280" height="640" fill="url(#glow)"/>
+
+  <!-- Subtle border -->
+  <rect x="1" y="1" width="1278" height="638" rx="0" fill="none" stroke="rgba(255,107,43,0.1)" stroke-width="1"/>
+
+  <!-- Logo icon (eye/shield shape) -->
+  <path d="M640 220 L610 280 L640 360 L670 280 Z" fill="none" stroke="#ff6b2b" stroke-width="4" stroke-linejoin="round"/>
+  <circle cx="640" cy="280" r="14" fill="#ff6b2b" opacity="0.85"/>
+
+  <!-- Brand name -->
+  <text x="640" y="420" text-anchor="middle" font-family="'JetBrains Mono', 'SF Mono', monospace" font-size="56" font-weight="800" fill="#e4e4e7" letter-spacing="8">VIGIL</text>
+
+  <!-- Tagline -->
+  <text x="640" y="468" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="20" fill="#8b8b92">The Security Agency That Never Sleeps</text>
+
+  <!-- URL -->
+  <text x="640" y="520" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="16" fill="#ff6b2b">vigil.agency</text>
+</svg>
