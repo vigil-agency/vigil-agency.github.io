@@ -97,7 +97,7 @@
     <div class="sidebar-group">
       <div class="sidebar-group-title">Architecture</div>
       <a href="#architecture" class="sidebar-link">Overview</a>
-      <a href="#views" class="sidebar-link">30 Views</a>
+      <a href="#views" class="sidebar-link">37 Views</a>
       <a href="#auth" class="sidebar-link">Auth & RBAC</a>
       <a href="#theme" class="sidebar-link">Theme</a>
     </div>
@@ -121,7 +121,7 @@ cd vigil
 cp .env.example .env
 npm install
 npm start
-# → http://localhost:4100 (admin / admin)</pre>
+# → http://localhost:4100 (check startup logs for bootstrap password)</pre>
 
     <h3>One-Liner</h3>
     <pre>curl -fsSL https://raw.githubusercontent.com/vigil-agency/vigil/main/install.sh | bash</pre>
@@ -141,7 +141,7 @@ npm start
       <tr><th>Variable</th><th>Default</th><th>Description</th></tr>
       <tr><td><code>VIGIL_PORT</code></td><td>4100</td><td>Server port</td></tr>
       <tr><td><code>VIGIL_USER</code></td><td>admin</td><td>Default admin username</td></tr>
-      <tr><td><code>VIGIL_PASS</code></td><td>admin</td><td>Default admin password</td></tr>
+      <tr><td><code>VIGIL_PASS</code></td><td>auto-generated</td><td>Bootstrap admin password (set it or read startup logs)</td></tr>
       <tr><td><code>DATABASE_URL</code></td><td>—</td><td>PostgreSQL connection (optional)</td></tr>
       <tr><td><code>AI_PROVIDER</code></td><td>—</td><td><code>claude-cli</code> or <code>codex</code></td></tr>
       <tr><td><code>ENCRYPTION_KEY</code></td><td>auto</td><td>32-byte hex for credential vault</td></tr>
@@ -164,6 +164,8 @@ docker compose up -d
       <tr><td>Nikto</td><td>Web server misconfiguration detection</td><td>6,700+</td></tr>
       <tr><td>OpenSSL</td><td>Certificate chain analysis, cipher grading, protocol testing</td><td>—</td></tr>
       <tr><td>dig/whois</td><td>DNS enumeration, zone transfer, WHOIS lookup</td><td>—</td></tr>
+      <tr><td>WAF Detection</td><td>WAF/CDN fingerprinting (30+ signatures), passive and active modes</td><td>30+</td></tr>
+      <tr><td>Code Audit</td><td>LLM-driven source code vulnerability scanning + binary analysis</td><td>7 vuln types</td></tr>
     </table>
 
     <h2 id="ai">AI Integration (BYOK)</h2>
@@ -177,14 +179,15 @@ docker compose up -d
     <p>AI powers: vulnerability triage, remediation guidance, incident postmortem, compliance gap analysis, threat briefings, NL-to-scanner commands.</p>
 
     <h2 id="agents">Agents & Campaigns</h2>
-    <p>20 built-in autonomous security agents that run parallel campaigns:</p>
+    <p>27 built-in autonomous security agents that run parallel campaigns:</p>
     <ul>
       <li>Vulnerability scanning and prioritization</li>
       <li>Compliance auditing against frameworks</li>
       <li>Threat hunting with hypothesis testing</li>
-      <li>OSINT reconnaissance</li>
-      <li>Remediation guidance generation</li>
-      <li>Scheduled execution via cron</li>
+      <li>OSINT reconnaissance (domain, IP, email, username, phone)</li>
+      <li>Adversarial analysis (5 Raptor agents with MUST-GATE reasoning)</li>
+      <li>Autonomous pentesting (P-E-R engine with dual causal graphs)</li>
+      <li>Purple Team MITRE ATT&CK kill chain simulation</li>
     </ul>
 
     <h2 id="mcp">MCP Server</h2>
@@ -198,9 +201,9 @@ docker compose up -d
     }
   }
 }</pre>
-    <p><strong>25+ tools</strong> covering scanning, vulnerabilities, assets, Docker, compliance, incidents, reports, and system metrics.</p>
-    <p><strong>3 resources:</strong> security posture, scan summary, vulnerability summary.</p>
-    <p><strong>4 prompts:</strong> security audit, incident response, vulnerability assessment, compliance review.</p>
+    <p><strong>37 tools</strong> covering scanning, OSINT, pentesting, adversarial analysis, proxy infrastructure, compliance, incidents, and AI security assessment.</p>
+    <p><strong>7 resources:</strong> security posture, threats, findings, code audit findings, WAF signatures, proxy nodes, AI security KB.</p>
+    <p><strong>8 prompts:</strong> security audit, incident response, threat briefing, compliance report, code security review, WAF reconnaissance, anonymous pentest setup, AI security review.</p>
 
     <h2 id="incidents">Incident Response</h2>
     <p>Full lifecycle incident management:</p>
@@ -218,39 +221,39 @@ docker compose up -d
       <tr><td>SOC 2</td><td>Trust Service Criteria</td></tr>
       <tr><td>ISO 27001</td><td>Annex A controls</td></tr>
       <tr><td>NIST 800-53</td><td>Security controls catalog</td></tr>
-      <tr><td>PCI-DSS</td><td>Payment card security</td></tr>
-      <tr><td>HIPAA</td><td>Healthcare data protection</td></tr>
+      <tr><td>OWASP LLM Top 10</td><td>AI/LLM security (10 controls, MITRE ATLAS mapping)</td></tr>
     </table>
 
     <h2 id="architecture">Architecture</h2>
     <pre>server.js              → Express + Socket.IO, auth, intervals
-routes/  (27 modules)  → REST API endpoints
-lib/     (17+ modules) → Scanner wrappers, AI, RBAC, crypto
+routes/  (~35 modules) → REST API endpoints
+lib/     (~27 modules) → Scanner wrappers, AI, RBAC, crypto, engines
 data/                  → JSON file stores (no DB required)
-public/                → Vanilla JS frontend (30 views)
+public/                → Vanilla JS frontend (37 views)
   css/                 → Vigil Dark theme (glass treatment)
   js/views/            → Self-registering ViewRegistry modules</pre>
     <p><strong>6 npm dependencies:</strong> express, socket.io, pg, node-pty, multer, @modelcontextprotocol/sdk</p>
 
-    <h2 id="views">30 Dashboard Views</h2>
-    <p>Dashboard, Metrics, Threat Map, Network Scan, Vuln Scan, Container Scan, Web Scan, SSL Audit, DNS Recon, Scan History, Scheduled Scans, CVE Tracker, Vuln Dashboard, Remediation, Compliance, Policy Editor, Audit Log, Incidents, Timeline, Postmortem, Assets, Network Map, Docker, Threat Intel, Pentest, Reports, Terminal, Alerts, MCP Server, Settings.</p>
+    <h2 id="views">37 Dashboard Views</h2>
+    <p>Dashboard, Intel Hub, AI Terminal, AI Chat, MCP Playground, Security Agents, Campaigns, Pentest, Playbooks, Calendar, Notes, Git, GitHub Hub, Threat Feed, Alert Triage, Threat Hunt, Port Scanner, Vuln Scanner, Web Scanner, Container Security, SSL Monitor, DNS Security, Code Audit, Proxy Nodes, OSINT, Findings, Attack Timeline, Frameworks, Reports, Audit Log, Network, Log Analysis, Credentials, Notifications, Settings, Docs.</p>
 
     <h2 id="auth">Auth & RBAC</h2>
     <ul>
-      <li>PBKDF2 password hashing</li>
+      <li>PBKDF2 password hashing, auto-generated bootstrap password</li>
       <li>Cookie sessions (<code>vigil_session</code>) or Bearer token</li>
-      <li>Optional TOTP 2FA</li>
+      <li>Optional TOTP 2FA with challenge-token flow (IP-bound, 5min TTL)</li>
       <li>3 roles: <strong>admin</strong> (full), <strong>analyst</strong> (scan + view), <strong>viewer</strong> (read-only)</li>
       <li>AES-256-GCM credential vault</li>
+      <li>Rate limiting: 5 login attempts per 15min window</li>
     </ul>
 
     <h2 id="theme">Vigil Dark Theme</h2>
     <p>Glass treatment with backdrop blur. Signal system:</p>
     <ul>
-      <li><strong style="color:#ff6b2b">Orange (#ff6b2b)</strong> — accent, primary actions, brand</li>
-      <li><strong style="color:#22d3ee">Cyan (#22d3ee)</strong> — secure, healthy, passing</li>
-      <li><strong style="color:#ef4444">Red (#ef4444)</strong> — threats, vulnerabilities, critical</li>
+      <li><strong style="color:#22d3ee">Cyan (#22d3ee)</strong> — secure, healthy, passing, active</li>
+      <li><strong style="color:#ff6b2b">Orange (#ff6b2b)</strong> — threats, vulnerabilities, warnings, critical</li>
     </ul>
+    <p>No green/red — all status indication uses the cyan/orange signal pair.</p>
 
     <h2 id="roadmap">Roadmap</h2>
     <div class="roadmap-item">
